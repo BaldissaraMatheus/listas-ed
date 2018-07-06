@@ -10,58 +10,10 @@ No* criaLista() {
   return NULL;
 }
 
-No* verificaVazia(No* head) {
-  return (head == NULL);
-}
-
 No* insereInicio(No* head, int val) {
   No* novo = (No*) malloc(sizeof(No));
   novo->valor = val;
   novo->prox = head;
-}
-
-No* insereFinal(No* head, int val) {
-  No* novo = (No*)malloc(sizeof(No));
-
-  novo->valor = val;
-  novo->prox = NULL;
-  
-  No* aux = head;
-
-  if (head==NULL) {
-    return novo;
-    
-  } else {
-    while (aux->prox != NULL) {
-      aux = aux->prox;
-    }
-    aux->prox = novo;
-  }
-  return head;
-}
-
-No* removeElemento(No* head, int val) {
-  No* aux = head;
-  No* ant = head;
-
-  while (aux->valor != val && aux != NULL) {
-    ant = aux;
-    aux = aux->prox;
-  }
-
-  if (aux == NULL) {
-    return head;
-  }
-}
-
-No* buscaElemento(No* head, int val) {
-  No* aux = (No*)malloc(sizeof(No));
-  for (aux=head; aux!=NULL; aux=aux->prox) {
-    if (aux->valor == val) {
-      return aux;
-    }
-  }
-  return NULL;
 }
 
 void imprimeLista(No* head) {
@@ -98,6 +50,7 @@ void comparaListas(No* l1, No* l2) {
     printf("Listas iguais");
   }
 }
+
 
 /* 4. Seja a lista encadeada apontada por head1 conforme especificada no item anterior. Supo-
 nha que a lista esteja ordenada. Especifique o pseudo-algoritmo de busca por valor. Se

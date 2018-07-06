@@ -1,7 +1,6 @@
 #include <stdio.h>
 #define TMAX 10
 
-
 /* 2. Sejam duas sequencias L1 e L2 referente a alunos matriculados em 
 duas disciplinas distintas. Elabore um pseudo-algoritmo que resolva o problema
 especificado abaixo. Cada elemento da lista deve conter o número da matrícula
@@ -47,7 +46,44 @@ void comparaListas(int l1[], int l2[]) {
   }
 }
 
+
+ /* .3 Eu realmente não sei oq fazer nessa questão, 
+ mas tão aí os algoritmos de busca binaria e insertion sort */
+
+int buscaBinaria(int arr[], int val, int com, int fim) {
+  while (fim > com) {
+    int meio = (com + fim)/2;
+
+    if (val == arr[meio]) {
+      return meio;
+
+    } else {
+      if (val < arr[meio]) {
+        return buscaBinaria(arr, val, com, meio);
+
+      } else {
+        return buscaBinaria(arr, val, meio, fim);
+      }
+    }
+  }
+  return -1;
+}
+
+void insertionSort(int arr[], int len) {
+  for (int i = 1; i < len; i++) {
+    int j = i;
+
+    while (j > 0 && arr[j-1] > arr[j]) {
+      int aux = arr[j-1];
+      arr[j-1] = arr[j];
+      arr[j] = aux;
+      j--;
+    }
+  }
+}
+
 void main() {
+  // 2.
   int l1[TMAX] = {1, 3, 5, 6, 7, 8, 9, 10, 11, 12};
   int l2[TMAX] = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
 

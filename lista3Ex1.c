@@ -74,11 +74,6 @@ void imprimeLista(No* head) {
   }
 }
 
-/* 2. Considerando a estrutura especificada acima, especifique um algoritmo que crie
-uma nova lista encadeada, com os elementos originais, mas ordenados de acordo 
-com ordem crescente de média do aluno, onde média do aluno é dada pela fórmula 
-(p1+p2+p3)/3 */
-
 void main() {
   No* lista1 = criaLista();
   lista1 = insereFinal(lista1, "Matheus", "1243", 'B', 8.1, 1.5, 0.5);

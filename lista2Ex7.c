@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-/* 7. Escreva uma função que verifique se um vetor V de N elementos está em ordem crescente. */
+/* 7. Escreva uma função que verifique se um vetor V de N elementos
+ está em ordem crescente. */
 
 
 void verifica(int arr[], int len) {

@@ -120,7 +120,7 @@ void contaElementosInterativo(No* lista) {
 /* 6. Escreva uma função recursiva e outra não recursiva que inverte a lista ligada apontada por
 p. Nenhum nó auxiliar deve ser criado. */
 
-No* inverteLista(No *lista){
+No* inverteInterativo(No *lista){
   No *curr = lista;
   No *ant = NULL;
   No *prox = NULL;
@@ -135,26 +135,19 @@ No* inverteLista(No *lista){
   lista = ant;
 }
 
-/*
-No* inverteListaRecursivo(No *lista){
-  No *curr = lista;
+No* inverteRecursivo(No *listaIn, No *listaOut){
+  if (listaIn != NULL) {
+    No *aux = listaIn;
+    listaIn = listaIn->prox;
+    aux->prox = listaOut;
+    listaOut = aux;
+    inverteRecursivo(listaIn, listaOut);
 
-  if (curr == NULL) {
-    return NULL;
-
-  } else if (curr->prox == NULL) {
-    return curr;
-
-  } 
-    No *aux = inverteListaRecursivo(curr->prox);
-    No *ant = curr;
-    curr->prox->prox = curr;
-    curr = curr->prox;
-    curr = ant;
-    curr->prox = NULL;  
-    return aux;
+  } else {
+    return listaOut;
+  }
 }
-*/
+
 void main() {
 
   /* 3.
@@ -191,10 +184,11 @@ void main() {
 
   //Não recursivo
   contaElementosInterativo(lista1);
-*/
+  */
 
-/*
+  /* 6.
   No* lista1 = criaLista();
+  No* lista2 = criaLista();
   lista1 = insereInicio(lista1, 1);
   lista1 = insereInicio(lista1, 3);
   lista1 = insereInicio(lista1, 5);
@@ -203,9 +197,13 @@ void main() {
   imprimeLista(lista1);
   printf("\n");
 
-  lista1 = inverteListaRecursivo(lista1);
+  // Inverte interativo
+  // lista2 = inverteInterativo(lista1);
 
-  imprimeLista(lista1);
+  // Inverte recursivo
+  // lista2 = inverteRecursivo(lista1, lista2);
+
+  imprimeLista(lista2);
   */
-
+ 
 }

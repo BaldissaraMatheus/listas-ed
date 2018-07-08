@@ -175,26 +175,21 @@ int retornaMaiorValor(Arvore* raiz) {
   int maxEsq;
   int maxDir;
 
-  if ((raiz->esq == NULL) && (raiz->dir == NULL)) {
-    maxValor = maxNo->valor;
+  if (raiz->esq != NULL) {
+    maxEsq = retornaMenorValor(maxNo->esq);
 
-  } else {
-    if (raiz->esq == NULL) {
-      maxEsq = retornaMenorValor(maxNo->esq);
-
-      if (maxEsq > maxValor) {
-        maxValor = maxEsq;
-      }       
-    }
-    
-    if (raiz->dir == NULL) {
-      maxDir = retornaMenorValor(maxNo->dir);
-      
-      if (maxDir > maxValor) {
-        maxValor = maxDir;
-      }       
+    if (maxEsq > maxValor) {
+      maxValor = maxEsq;
     }       
   }
+  
+  if (raiz->dir != NULL) {
+    maxDir = retornaMenorValor(maxNo->dir);
+    
+    if (maxDir > maxValor) {
+      maxValor = maxDir;
+    }       
+  }       
 
   return maxValor;
 }

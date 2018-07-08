@@ -150,26 +150,21 @@ int retornaMenorValor(Arvore* raiz) {
   int minEsq;
   int minDir;
 
-  if ((raiz->esq == NULL) && (raiz->dir == NULL)) {
-    minValor = minNo->valor;
+  if (raiz->esq != NULL) {
+    minEsq = retornaMenorValor(minNo->esq);
 
-  } else {
-    if (raiz->esq == NULL) {
-      minEsq = retornaMenorValor(minNo->esq);
-
-      if (minEsq < minValor) {
-        minValor = minEsq;
-      }       
-    }
-    
-    if (raiz->dir == NULL) {
-      minDir = retornaMenorValor(minNo->dir);
-      
-      if (minDir < minValor) {
-        minValor = minDir;
-      }       
+    if (minEsq < minValor) {
+      minValor = minEsq;
     }       
   }
+  
+  if (raiz->dir != NULL) {
+    minDir = retornaMenorValor(minNo->dir);
+    
+    if (minDir < minValor) {
+      minValor = minDir;
+    }       
+  }       
 
   return minValor;
 }

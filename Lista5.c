@@ -145,13 +145,13 @@ um ponteiro para a raiz de uma árvore binária e retorna o maior valor e o
 menor valor dentre todos os nós da árvore. */
 
 int retornaMenorValor(Arvore* raiz) {
-  Arvore* minNo = raiz;
-  int minValor = minNo->valor;
+  Arvore* aux = raiz;
+  int minValor = aux->valor;
   int minEsq;
   int minDir;
 
   if (raiz->esq != NULL) {
-    minEsq = retornaMenorValor(minNo->esq);
+    minEsq = retornaMenorValor(aux->esq);
 
     if (minEsq < minValor) {
       minValor = minEsq;
@@ -159,7 +159,7 @@ int retornaMenorValor(Arvore* raiz) {
   }
   
   if (raiz->dir != NULL) {
-    minDir = retornaMenorValor(minNo->dir);
+    minDir = retornaMenorValor(aux->dir);
     
     if (minDir < minValor) {
       minValor = minDir;
@@ -170,13 +170,13 @@ int retornaMenorValor(Arvore* raiz) {
 }
 
 int retornaMaiorValor(Arvore* raiz) {
-  Arvore* maxNo = raiz;
-  int maxValor = maxNo->valor;
+  Arvore* aux = raiz;
+  int maxValor = aux->valor;
   int maxEsq;
   int maxDir;
 
   if (raiz->esq != NULL) {
-    maxEsq = retornaMenorValor(maxNo->esq);
+    maxEsq = retornaMenorValor(aux->esq);
 
     if (maxEsq > maxValor) {
       maxValor = maxEsq;
@@ -184,7 +184,7 @@ int retornaMaiorValor(Arvore* raiz) {
   }
   
   if (raiz->dir != NULL) {
-    maxDir = retornaMenorValor(maxNo->dir);
+    maxDir = retornaMenorValor(aux->dir);
     
     if (maxDir > maxValor) {
       maxValor = maxDir;

@@ -34,7 +34,6 @@ Fila* insereNaFila(Fila* header, Arvore* no) {
   }
 }
 
-// Em dúvida quanto a essa função e sua aplicação no exercício 2
 Arvore* removeDaFila(Fila **header) {
   if ((*header) != NULL){
     Fila *auxFila = (*header);

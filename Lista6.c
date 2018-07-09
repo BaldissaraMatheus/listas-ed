@@ -175,6 +175,105 @@ int procuraMaiorImediato(Arvore *raiz, int valor){
 }
 
 
+/* 4. Sejam B1 e B2 duas árvores binárias apontadas por no_ABB* T1 e
+no_ABB* T2 respectivamente. Faça um procedimento merge_ABB (T1, T2)
+que faça a junção das duas árvores de forma eficiente, resultando em
+uma árvore binária de busca apontada por no_ABB* T3. Atenção, as
+árvores originais não devem ser perdidas. */
+
+typedef struct fila{
+  Arvore* no;
+  struct fila *prox;
+} Fila;
+
+Fila* insereNaFila(Fila* header, Arvore* no) {
+  Fila* aux = header;
+  Fila* novo = (Fila*)malloc(sizeof(Fila));
+  novo->no = no;
+  novo->prox = NULL;
+
+  if (aux == NULL) {
+    return novo;
+    
+  } else {
+    while (aux->prox != NULL) {
+      aux = aux->prox;
+    }
+
+    aux->prox = novo;
+    return header;
+  }
+}
+
+Fila* removeDaFila(Fila *header) {
+  if (header != NULL){
+    Arvore* auxNo = header->no;
+    header = header->prox;
+
+    return auxNo;
+  }
+}
+
+Arvore* insere(Arvore* head, int val) {
+  Arvore* novo = (Arvore*) malloc(sizeof(Arvore));
+  novo->valor = val;
+}
+
+void insereAbb(Arvore* no, int valor) {
+  if(no == NULL) {
+    no = insere(no, valor);
+
+  } else {
+    if(valor == no->valor) {
+      return;
+
+    } else if(valor > no->valor) {
+      if(no->dir != NULL) {
+        insere(no->dir, valor);
+        
+      } else {
+        no->dir = insere(no->dir, valor);
+      }
+    } else if(valor < no->valor) {
+      if(no->esq != NULL) {
+        insere(no->esq, valor);
+          
+      } else {
+        no->esq = insere(no->esq, valor);
+
+      }
+    }
+  }
+}
+
+Arvore* merge_ABB(Arvore* t1, Arvore* t2) {
+  if (t1==NULL && t2==NULL) return;
+
+  Arvore* t3 = t1;
+  Arvore* aux = t2;
+
+  Fila* fila;
+  insereNaFila(fila, aux);
+
+  while (fila!=NULL) {
+
+    aux = removeDaFila(fila);    
+    insereNaFila(t3, aux->valor);
+
+    if (aux->esq != NULL) {
+      insereNaFila(fila, t3->esq);
+      aux = aux->esq;
+    }
+    
+    if (aux->dir != NULL) {
+      insereNaFila(fila, t3->dir);
+      aux = aux->esq;    
+    }
+  }
+  return t3;
+}
+
+
 /* 5. Seja v um dado valor inteiro. Especifique um algoritmo que procure o
 valor inteiro imediatamente menor que v armazenado em B. Caso tal
 elemento exista, remova-o. */

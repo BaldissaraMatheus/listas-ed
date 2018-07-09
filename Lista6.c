@@ -71,7 +71,7 @@ int min_value_ABB(Arvore* raiz) {
   return minValor;
 }
 
-/* 1. Descreva um algoritmo max_value_ABB que forneça o maior valor armazenado em B. */
+/* 2. Descreva um algoritmo max_value_ABB que forneça o maior valor armazenado em B. */
 int max_value_ABB(Arvore* raiz) {
   Arvore* aux = raiz;
   int maxValor = aux->valor;

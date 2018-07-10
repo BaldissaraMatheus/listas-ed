@@ -51,7 +51,7 @@ int min_value_ABB(Arvore* raiz) {
   int minDir;
 
   if (raiz->esq != NULL) {
-    minEsq = in_value_ABB(aux->esq);
+    minEsq = min_value_ABB(aux->esq);
 
     if (minEsq < minValor) {
       minValor = minEsq;
@@ -59,7 +59,7 @@ int min_value_ABB(Arvore* raiz) {
   }
   
   if (raiz->dir != NULL) {
-    minDir = in_value_ABB(aux->dir);
+    minDir = min_value_ABB(aux->dir);
     
     if (minDir < minValor) {
       minValor = minDir;

@@ -178,6 +178,8 @@ que faça a junção das duas árvores de forma eficiente, resultando em
 uma árvore binária de busca apontada por no_ABB* T3. Atenção, as
 árvores originais não devem ser perdidas. */
 
+// Não sei se essa resolução está correta
+
 typedef struct fila{
   Arvore* no;
   struct fila *prox;
@@ -211,14 +213,11 @@ Fila* removeDaFila(Fila *header) {
   }
 }
 
-Arvore* insere(Arvore* head, int val) {
-  Arvore* novo = (Arvore*) malloc(sizeof(Arvore));
-  novo->valor = val;
-}
-
 void insereAbb(Arvore* no, int valor) {
-  if(no == NULL) {
-    no = insere(no, valor);
+  Arvore* novo = (Arvore*) malloc(sizeof(Arvore));
+
+  if(no == NULL) {      
+      no->valor = valor;
 
   } else {
     if(valor == no->valor) {
@@ -226,17 +225,19 @@ void insereAbb(Arvore* no, int valor) {
 
     } else if(valor > no->valor) {
       if(no->dir != NULL) {
-        insere(no->dir, valor);
+        insereAbb(no->dir, valor);
         
       } else {
-        no->dir = insere(no->dir, valor);
+        novo->valor = valor;        
+        no->dir = novo;
       }
     } else if(valor < no->valor) {
       if(no->esq != NULL) {
-        insere(no->esq, valor);
+        insereAbb(no->esq, valor);
           
       } else {
-        no->esq = insere(no->esq, valor);
+        novo->valor = valor;        
+        no->esq = novo;
 
       }
     }

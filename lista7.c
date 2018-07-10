@@ -59,7 +59,7 @@ Usaria o algoritmo da questão 4. */
 se H é um max_heap. */
 
 void ver_max_heap(int arr[], int len) {
-  for (int i=0; i<TMAX/2; i++) {
+  for (int i=0; i<len/2; i++) {
     if(arr[(i*2)+1] > arr[i] || arr[(i*2)+2] > arr[i]) {
       printf("Não é max_heap.\n");
       return;

@@ -15,8 +15,8 @@ typedef struct fila{
 } Fila;
 
 // Funções de fila
-Fila* insereNaFila(Fila* header, Arvore* no) {
-  Fila* aux = header;
+Fila* insereNaFila(Fila* fila, Arvore* no) {
+  Fila* aux = fila;
   Fila* novo = (Fila*)malloc(sizeof(Fila));
   novo->no = no;
   novo->prox = NULL;
@@ -30,18 +30,16 @@ Fila* insereNaFila(Fila* header, Arvore* no) {
     }
 
     aux->prox = novo;
-    return header;
+    return fila;
   }
 }
 
-Arvore* removeDaFila(Fila **header) {
-  if ((*header) != NULL){
-    Fila *auxFila = (*header);
-    Arvore* auxArvore = (*header)->no;
-    (*header) = (*header)->prox;
-    free(auxFila);
+Arvore* removeDaFila(Fila *fila) {
+  if (fila != NULL){
+    Arvore* auxNo = fila->no;
+    fila = fila->prox;
 
-    return auxArvore;
+    return auxNo;
   }
 }
 

@@ -255,7 +255,7 @@ Arvore* merge_ABB(Arvore* t1, Arvore* t2) {
   while (fila!=NULL) {
 
     aux = removeDaFila(fila);    
-    insereNaFila(t3, aux->valor);
+    insereAbb(t3, aux->valor);
 
     if (aux->esq != NULL) {
       insereNaFila(fila, t3->esq);

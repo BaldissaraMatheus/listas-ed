@@ -103,7 +103,6 @@ exista. */
 int procuraMaiorImediato(Arvore *raiz, int valor){
 if (raiz != NULL) {
     Arvore *aux = raiz;
-    Fila *fila = NULL;
 
     while ((aux !=  NULL) && (valor != aux->valor)) {
       if (valor > aux->valor) {        
@@ -280,7 +279,6 @@ elemento exista, remova-o. */
 int procuraMaiorImediato(Arvore *raiz, int valor){
 if (raiz != NULL) {
     Arvore *aux = raiz;
-    Fila *fila = NULL;
 
     while ((aux !=  NULL) && (valor != aux->valor)) {
       if (valor > aux->valor) {        
